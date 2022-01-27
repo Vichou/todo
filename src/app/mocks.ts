@@ -11,8 +11,15 @@ export const scenarios: Scenarios = {
             { id: '3', title: 'Little geek session!', isClosed: false}
         ],
         responseCode: 200,
-        delay: 0
+        delay: 2000
       },
+      {
+        url: /todo/,
+        method: 'PUT',
+        response: {},
+        responseCode: 200, 
+        delay: 1000
+      }
     ],
   };
   

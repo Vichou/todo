@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getTodos } from 'src/store/actions';
+import { getTodos, updateTodo } from 'src/store/actions';
 import { selectLoading, selectTodos } from 'src/store/selectors';
 import { Todo } from '../models/todo';
 
@@ -23,6 +23,10 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(getTodos());
+  }
+
+  toggleTodo(todo: Todo) {
+    this.store.dispatch(updateTodo({todo}));
   }
 
 }

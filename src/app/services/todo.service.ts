@@ -11,8 +11,12 @@ export class TodoService {
 
   constructor(private http: HttpClient) {}
 
-   list(): Observable<Todo[]> {
+  list(): Observable<Todo[]> {
     console.log("[Todo Service] getting todo list");
     return this.http.get<Todo[]>(`${environment.baseUrl}/todos`);
+  }
+
+  update(todo: Todo): Observable<void> {
+    return this.http.put<void>(`${environment.baseUrl}/todo`, todo);
   }
 }

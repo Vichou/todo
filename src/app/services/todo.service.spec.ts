@@ -42,4 +42,20 @@ describe('TodoService', () => {
     req.flush(mockedTodoList);
   });
 
+  it('should update a todo', (done:DoneFn) => {
+    const mockedTodo: Todo = { id: 1, title: 'mySuperTodo', isClosed: true, closingTimestamp: 456 };
+
+    service.update(mockedTodo).pipe(first()).subscribe((res) =>{
+      expect(res).toBeUndefined();
+      done();
+    }, done.fail);
+
+    const req = httpMock.expectOne(
+      (r) => r.url === `${environment.baseUrl}/todo`
+    );
+    expect(req.request.method).toEqual('PUT');
+
+    req.flush(mockedTodo);
+  })
+
 });
