@@ -56,6 +56,27 @@ describe('TodoService', () => {
     expect(req.request.method).toEqual('PUT');
 
     req.flush(mockedTodo);
+  });
+
+  fit('should get a todo based on it id', (done:DoneFn) => {
+    const todoId = 1;
+    const mockedTodo = {
+      id: 1,
+      title: 'Drink coffee',
+      description: 'Nespresso, What Else?',
+      isClosed: true
+    }
+    service.get(todoId).pipe(first()).subscribe((res:Todo) => {
+      expect(res).toEqual(mockedTodo),
+      done();
+    }, done.fail);
+
+    const req = httpMock.expectOne(
+      (r) => r.url === `${environment.baseUrl}/todo/${todoId}`
+    );
+    expect(req.request.method).toEqual('GET');
+
+    req.flush(todoId);
   })
 
 });

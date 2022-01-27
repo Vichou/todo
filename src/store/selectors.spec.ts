@@ -1,5 +1,5 @@
 import {State} from './reducer';
-import { selectTodos } from './selectors';
+import { selectTodo, selectTodos } from './selectors';
 
 describe('Selectors', () => {
   const initialState: State = {
@@ -23,6 +23,13 @@ describe('Selectors', () => {
     const result = selectTodos.projector(initialState);
     expect(result).toEqual(sortedTodos);
   });
+
+  it('should select a specific todo based on it id', () => {
+    selectTodos.projector(initialState);
+    const todoId = 1;
+    const result = selectTodo(todoId).projector(initialState);
+    expect(result).toEqual(initialState.todos.find((todo) => todo.id === todoId))
+  })
 });
 
 

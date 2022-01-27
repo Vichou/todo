@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { getTodos, getTodosFailed, getTodosSuccess, updateTodo, updateTodoFailed, updateTodoSuccess } from './actions';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { getTodo, getTodoFailed, getTodos, getTodosFailed, getTodosSuccess, getTodoSuccess, updateTodo, updateTodoFailed, updateTodoSuccess } from './actions';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { TodoService } from 'src/app/services/todo.service';
 
 
@@ -41,6 +41,18 @@ export class Effects {
       })
     )
   );
+
+  getTodo$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(getTodo),
+      switchMap(({id}) =>
+        this.todoService.get(id).pipe(
+          map((todo) => getTodoSuccess({todo})),
+          catchError(() => [getTodoFailed])
+        )
+      )
+    )
+  )
 
   constructor(private actions$: Actions, private todoService: TodoService) {}
 

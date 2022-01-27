@@ -12,7 +12,7 @@
                 (change)="toggleTodo(todo)"
                 [checked]="todo.isClosed"
               ></mat-checkbox>
-              <span class="title" [class.isCrossedOut]="todo.isClosed">{{ todo.title }}</span>
+              <span class="title" [class.isCrossedOut]="todo.isClosed" [routerLink]="'/todo/' + todo.id">{{ todo.title }}</span>
             </h4>
           </mat-list-item>
         </mat-list>

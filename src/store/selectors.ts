@@ -1,4 +1,5 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
+import { Todo } from 'src/app/models/todo';
 import {featureKey, State} from './reducer';
 
 export const getState = createFeatureSelector<State>(featureKey);
@@ -22,3 +23,6 @@ export const selectLoading = createSelector(
   getState,
   (state) => state.isLoading,
 )
+
+export const selectTodo = (id:number) => createSelector(selectTodos, (todos:Todo[]) => todos.find((todo) => todo.id === id));
+

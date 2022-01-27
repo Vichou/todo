@@ -1,0 +1,8 @@
+#container {
+    padding: 50px 50px 50px 50px;
+    width: auto;
+}
+
+.closed {
+    background-color: rgba(172,242,171, 0.25);
+}

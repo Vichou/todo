@@ -18,11 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { todosReducer } from 'src/store/reducer';
 import { environment } from 'src/environments/environment';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent
+    TodoListComponent,
+    DetailsComponent
   ],
   imports: [
     AppRoutingModule,

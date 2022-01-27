@@ -21,3 +21,15 @@ export const updateTodoSuccess = createAction(
 );
 
 export const updateTodoFailed = createAction('[Todo] Update todo failed');
+
+export const getTodo = createAction(
+  '[Todo] Get todo',
+  props<{ id: number }>(),
+)
+
+export const getTodoSuccess = createAction(
+  '[Todo] Get todo success',
+  props<{ todo: Todo }>(),
+);
+
+export const getTodoFailed = createAction('[Todo] Get todo failed');
