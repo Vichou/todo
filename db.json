@@ -4,14 +4,14 @@
       "id": 1,
       "title": "Drink Coffee",
       "description": "Nespresso, What Else?",
-      "isClosed": false
+      "isClosed": true,
+      "closingTimestamp": 1643361363199
     },
     {
       "id": 2,
       "title": "Work... :(",
       "description": "Need to finish todo list app!!!",
-      "isClosed": true,
-      "closingTimestamp": 1643352668626
+      "isClosed": false
     },
     {
       "id": 3,

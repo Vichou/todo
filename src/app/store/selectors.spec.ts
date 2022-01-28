@@ -1,5 +1,5 @@
 import {State} from './reducer';
-import { selectTodo, selectTodos } from './selectors';
+import { selectLoading, selectTodo, selectTodos } from './selectors';
 
 describe('Selectors', () => {
   const initialState: State = {
@@ -19,15 +19,20 @@ describe('Selectors', () => {
     { id: 3, title: 'todo3Title', isClosed: true, closingTimestamp: 56 },
   ]
 
-  it('should select todos list and sort them by closingTimestamp, isClosed and title', () => {
+  it('should select todos list and sort them by closingTimestamp, isClosed and id', () => {
     const result = selectTodos.projector(initialState);
     expect(result).toEqual(sortedTodos);
   });
 
+  it('should return the loading state', () => {
+    const result = selectLoading.projector(initialState);
+    expect(result).toBeFalse();
+  })
+
   it('should select a specific todo based on it id', () => {
-    selectTodos.projector(initialState);
+    const todos = selectTodos.projector(initialState);
     const todoId = 1;
-    const result = selectTodo(todoId).projector(initialState);
+    const result = selectTodo(todoId).projector(todos);
     expect(result).toEqual(initialState.todos.find((todo) => todo.id === todoId))
   })
 });

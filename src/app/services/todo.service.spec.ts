@@ -45,34 +45,22 @@ describe('TodoService', () => {
   it('should update a todo', (done:DoneFn) => {
     const mockedTodo: Todo = { id: 1, title: 'mySuperTodo', isClosed: true, closingTimestamp: 456 };
 
-    service.update(mockedTodo).pipe(first()).subscribe((res) =>{
-      expect(res).toBeUndefined();
-      done();
-    }, done.fail);
+    service.update(mockedTodo).pipe(first()).subscribe(() => done(), done.fail);
 
     const req = httpMock.expectOne(
-      (r) => r.url === `${environment.baseUrl}/todo`
+      (r) => r.url === `${environment.baseUrl}/todos/1`
     );
     expect(req.request.method).toEqual('PUT');
 
     req.flush(mockedTodo);
   });
 
-  fit('should get a todo based on it id', (done:DoneFn) => {
+  it('should get a todo based on it id', (done:DoneFn) => {
     const todoId = 1;
-    const mockedTodo = {
-      id: 1,
-      title: 'Drink coffee',
-      description: 'Nespresso, What Else?',
-      isClosed: true
-    }
-    service.get(todoId).pipe(first()).subscribe((res:Todo) => {
-      expect(res).toEqual(mockedTodo),
-      done();
-    }, done.fail);
+    service.get(todoId).pipe(first()).subscribe(() => done(), done.fail);
 
     const req = httpMock.expectOne(
-      (r) => r.url === `${environment.baseUrl}/todo/${todoId}`
+      (r) => r.url === `${environment.baseUrl}/todos/${todoId}`
     );
     expect(req.request.method).toEqual('GET');
 

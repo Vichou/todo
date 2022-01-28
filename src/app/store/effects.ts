@@ -35,7 +35,7 @@ export class Effects {
       }),
       switchMap((todo) => {
         return this.todoService.update(todo).pipe(
-          map(() => updateTodoSuccess({todo})),
+          map((updatedTodo) => updateTodoSuccess({todo: updatedTodo})),
           catchError(() => [updateTodoFailed()]),
         )
       })

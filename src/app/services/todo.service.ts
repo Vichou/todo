@@ -15,8 +15,8 @@ export class TodoService {
     return this.http.get<Todo[]>(`${environment.baseUrl}/todos`);
   }
 
-  update(todo: Todo): Observable<void> {
-    return this.http.put<void>(`${environment.baseUrl}/todos/${todo.id}`, todo);
+  update(todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>(`${environment.baseUrl}/todos/${todo.id}`, todo);
   }
 
   get(todoId: number): Observable<Todo> {
