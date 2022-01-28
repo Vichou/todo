@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Todo } from 'src/app/models/todo';
+import { Todo, TodoBase } from 'src/app/models/todo';
 
 export const getTodos = createAction('[Todos] Get todos');
 
@@ -33,3 +33,15 @@ export const getTodoSuccess = createAction(
 );
 
 export const getTodoFailed = createAction('[Todo] Get todo failed');
+
+export const createTodo = createAction(
+  '[Todo] Create todo',
+  props<{ todoBase: TodoBase }>(),
+);
+
+export const createTodoSuccess = createAction(
+  '[Todo] Create todo success',
+  props<{ todo: Todo }>(),
+);
+
+export const createTodoFailed = createAction('[Todo] Create todo failed');

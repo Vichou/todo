@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoListComponent } from './todo-list.component';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { State } from 'src/store/reducer';
-import { selectTodos } from 'src/store/selectors';
+import { State } from 'src/app/store/reducer';
+import { selectTodos } from 'src/app/store/selectors';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatList, MatListItem } from '@angular/material/list';
 import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';

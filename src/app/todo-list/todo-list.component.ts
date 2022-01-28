@@ -1,8 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getTodos, updateTodo } from 'src/store/actions';
-import { selectLoading, selectTodos } from 'src/store/selectors';
+import { getTodos, updateTodo } from 'src/app/store/actions';
+import { selectLoading, selectTodos } from 'src/app/store/selectors';
 import { Todo } from '../models/todo';
 
 @Component({

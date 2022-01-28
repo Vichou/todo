@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getTodo } from 'src/store/actions';
-import { selectLoading, selectTodo } from 'src/store/selectors';
+import { getTodo } from 'src/app/store/actions';
+import { selectLoading, selectTodo } from 'src/app/store/selectors';
 import { Todo } from '../models/todo';
 
 @Component({

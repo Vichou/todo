@@ -5,3 +5,8 @@ export interface Todo {
     isClosed: boolean,
     closingTimestamp?: number,
 }
+
+export interface TodoBase {
+    title: string, 
+    description? : string,
+}

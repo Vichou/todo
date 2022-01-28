@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectTodo } from 'src/store/selectors';
+import { selectTodo } from 'src/app/store/selectors';
 
 @Injectable({
   providedIn: 'root',

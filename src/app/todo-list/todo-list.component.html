@@ -12,10 +12,12 @@
                 (change)="toggleTodo(todo)"
                 [checked]="todo.isClosed"
               ></mat-checkbox>
-              <span class="title" [class.isCrossedOut]="todo.isClosed" [routerLink]="'/todo/' + todo.id">{{ todo.title }}</span>
+              <span class="todo" [class.isCrossedOut]="todo.isClosed" [routerLink]="'/todo/' + todo.id">{{ todo.title }}</span>
             </h4>
           </mat-list-item>
         </mat-list>
+
+        <button mat-raised-button color="warn" routerLink="/add">Add a todo!!</button>
       </ng-template>
 
     </mat-card-content>

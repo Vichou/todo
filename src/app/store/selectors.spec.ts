@@ -13,8 +13,8 @@ describe('Selectors', () => {
   };
 
   const sortedTodos = [
-    { id: 1, title: 'todo1Title', isClosed: false },
     { id: 4, title: 'todo4Title', isClosed: false },
+    { id: 1, title: 'todo1Title', isClosed: false },
     { id: 2, title: 'todo2Title', isClosed: true, closingTimestamp: 45 },
     { id: 3, title: 'todo3Title', isClosed: true, closingTimestamp: 56 },
   ]

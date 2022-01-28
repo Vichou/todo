@@ -1,0 +1,23 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Drink Coffee",
+      "description": "Nespresso, What Else?",
+      "isClosed": false
+    },
+    {
+      "id": 2,
+      "title": "Work... :(",
+      "description": "Need to finish todo list app!!!",
+      "isClosed": true,
+      "closingTimestamp": 1643352668626
+    },
+    {
+      "id": 3,
+      "title": "Little geek session!",
+      "description": "Need to ask the boys about starting time...s",
+      "isClosed": false
+    }
+  ]
+}

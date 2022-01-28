@@ -1,13 +1,17 @@
 #container {
-    padding: 50px 50px 50px 50px;
-    width: auto;
+  padding: 50px 50px 50px 50px;
+  width: auto;
 }
 
 .isCrossedOut {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
-.title {
-    margin-left: 8px;
-    cursor: pointer;
+.todo {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.todo:hover {
+  filter: brightness(50%);
 }

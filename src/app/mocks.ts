@@ -71,5 +71,17 @@ export const scenarios: Scenarios = {
       responseCode: 200,
       delay: 2000,
     },
+    {
+      url: /todo/,
+      method: 'POST',
+      response: {
+        id: Date.now(),
+        title: 'my New Todo',
+        description: 'Hope it worked correctly...',
+        isClosed: false,
+      },
+      responseCode: 200,
+      delay: 0,
+    }
   ],
 };

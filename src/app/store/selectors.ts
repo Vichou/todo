@@ -15,7 +15,7 @@ export const selectTodos = createSelector(
         return a.isClosed ? 1 : -1
       }
 
-      return a.title.localeCompare(b.title);
+      return b.id - a.id;
     }),
 );
 
