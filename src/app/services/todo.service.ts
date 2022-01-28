@@ -12,7 +12,6 @@ export class TodoService {
   constructor(private http: HttpClient) {}
 
   list(): Observable<Todo[]> {
-    console.log("[Todo Service] getting todo list");
     return this.http.get<Todo[]>(`${environment.baseUrl}/todos`);
   }
 
@@ -21,12 +20,10 @@ export class TodoService {
   }
 
   get(todoId: number): Observable<Todo> {
-    console.log("[Todo Service] getting todo with id", todoId)
     return this.http.get<Todo>(`${environment.baseUrl}/todos/${todoId}`);
   }
 
   add(todoBase: TodoBase): Observable<Todo> {
-    console.log("[Todo Service] creating todo");
     const todo: Todo = { ...todoBase, isClosed: false, id: Date.now() }; 
     return this.http.post<Todo>(`${environment.baseUrl}/todos`, todo);
   }

@@ -27,7 +27,6 @@ export class AddComponent {
   }
 
   createTodo() {
-    console.log(this.todoForm.value);
     this.store.dispatch(createTodo({ todoBase: this.todoForm.value }));
     this.router.navigate(['/'])
   }
