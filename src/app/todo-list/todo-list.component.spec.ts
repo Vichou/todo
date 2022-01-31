@@ -10,12 +10,15 @@ import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
 import {MockComponents} from 'ng-mocks';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
   let store: MockStore<State>;
   let mockTodosSelector;
+
+  const fakeActivatedRoute = { snapshot: { paramMap: convertToParamMap({todoId: 1})}}
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -31,7 +34,10 @@ describe('TodoListComponent', () => {
         ),
       ],
       imports: [FormsModule],
-      providers: [provideMockStore()],
+      providers: 
+        [provideMockStore(),
+        { provide: ActivatedRoute, useValue: fakeActivatedRoute }
+      ],
     });
   });
 

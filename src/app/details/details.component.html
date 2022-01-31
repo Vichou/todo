@@ -5,7 +5,12 @@
     <mat-card [class.closed]="todo.isClosed">
       <mat-card-title>{{ todo.title }}</mat-card-title>
       <mat-card-content>
-        <span class="description">{{ todo.description }}</span>
+        <div>
+          <span class="description">{{ todo.description }}</span>
+        </div>
+        <div>
+          <button mat-raised-button color="warn" routerLink="/">Back</button>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
