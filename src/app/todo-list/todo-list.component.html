@@ -1,26 +1,21 @@
-<div id="container">
-  <mat-card>
-    <mat-card-title>What am I going to do today...</mat-card-title>
-    <mat-card-content>
-      <mat-spinner  *ngIf="loading$ | async else loadedComponent" value="indeterminate"></mat-spinner>
+<mat-card>
+  <mat-card-title>What am I going to do today...</mat-card-title>
+  <mat-card-content>
+    <mat-spinner *ngIf="loading$ | async else loadedComponent" value="indeterminate"></mat-spinner>
 
-      <ng-template #loadedComponent>
-        <mat-list >
-          <mat-list-item *ngFor="let todo of todos$ | async">
-            <h4 matLine>
-              <mat-checkbox 
-                (change)="toggleTodo(todo)"
-                [checked]="todo.isClosed"
-              ></mat-checkbox>
-              <span class="todo" [class.isCrossedOut]="todo.isClosed" [routerLink]="'/todo/' + todo.id">{{ todo.title }}</span>
-            </h4>
-          </mat-list-item>
-        </mat-list>
+    <ng-template #loadedComponent>
+      <mat-list>
+        <mat-list-item *ngFor="let todo of todos$ | async">
+          <h4 matLine>
+            <mat-checkbox (change)="toggleTodo(todo)" [checked]="todo.isClosed"></mat-checkbox>
+            <span class="todo" [class.isCrossedOut]="todo.isClosed" [routerLink]="'/todo/' + todo.id">{{ todo.title
+              }}</span>
+          </h4>
+        </mat-list-item>
+      </mat-list>
 
-        <button mat-raised-button color="warn" routerLink="/add">Add a todo!!</button>
-      </ng-template>
+      <button mat-raised-button color="warn" routerLink="/add">Add a todo!!</button>
+    </ng-template>
 
-    </mat-card-content>
-  </mat-card>
-</div>
-
+  </mat-card-content>
+</mat-card>

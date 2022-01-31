@@ -1,31 +1,28 @@
-<div id='container'>
-    <mat-card>
-        <mat-card-title>Create a todo</mat-card-title>
-        <mat-card-content>
-            <form (ngSubmit)="createTodo()" [formGroup]="todoForm">
+<mat-card>
+    <mat-card-title>Create a todo</mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="createTodo()" [formGroup]="todoForm">
 
-                <div>
-                    <mat-form-field appereance='fill'>
-                        <mat-label>Title</mat-label>
-                        <input matInput formControlName='title'>
-                        <mat-error></mat-error>
-                    </mat-form-field>
-                </div>
+            <div>
+                <mat-form-field appereance='fill'>
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName='title'>
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
 
-                <div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName='description'>
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
 
-                    <mat-form-field>
-                        <mat-label>Description</mat-label>
-                        <input matInput formControlName='description'>
-                        <mat-error></mat-error>
-                    </mat-form-field>
-                </div>
+            <button class="submit-button" mat-raised-button color="primary" type="submit"
+                [disabled]="todoForm.invalid">Create todo</button>
 
-                <button class="submit-button" mat-raised-button color="primary" type="submit"
-                    [disabled]="todoForm.invalid">Create todo</button>
-
-                <button mat-raised-button color="warn" routerLink="/">Back</button>
-            </form>
-        </mat-card-content>
-    </mat-card>
-</div>
+            <button mat-raised-button color="warn" routerLink="/">Back</button>
+        </form>
+    </mat-card-content>
+</mat-card>

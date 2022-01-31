@@ -5,7 +5,7 @@
       "title": "Drink Coffee",
       "description": "Nespresso, What Else?",
       "isClosed": true,
-      "closingTimestamp": 1643361363199
+      "closingTimestamp": 1643635095398
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
     {
       "id": 3,
       "title": "Little geek session!",
-      "description": "Need to ask the boys about starting time...s",
+      "description": "Need to ask the boys about starting time...",
       "isClosed": false
     }
   ]

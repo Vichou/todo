@@ -1,4 +1,9 @@
 .home {
-  cursor: pointer
+  border:none;
+  background-color: transparent;
+}
+
+.container {
+  padding: 50px;
 }
   

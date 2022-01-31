@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import { Todo } from 'src/app/models/todo';
-import {createTodoSuccess, getTodo, getTodos, getTodosSuccess, getTodoSuccess, updateTodo, updateTodoSuccess} from './actions';
+import {createTodoSuccess, getTodo, getTodoFailed, getTodos, getTodosSuccess, getTodoSuccess, updateTodo, updateTodoSuccess} from './actions';
 
 export const featureKey = 'todosStore';
 
@@ -54,6 +54,7 @@ export const todosReducer = createReducer(
     getTodo,
     (state) => ({
       ...state,
+      ...state.todos,
       isLoading: true,
     })
   ),
@@ -65,6 +66,12 @@ export const todosReducer = createReducer(
         todo
       ],
       isLoading: false
+    })
+  ),
+  on(getTodoFailed, 
+    (state) => ({
+      ...state,
+      isLoading: false,
     })
   ),
   on(createTodoSuccess,

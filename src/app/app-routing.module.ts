@@ -10,9 +10,11 @@ import { UrlValidityGuard } from './url-validity.guard';
 const routes: Routes = [
     { path: '', component: TodoListComponent, pathMatch: 'full' },  
     { path: 'todo', children: [
+      { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: ':todoId', component: DetailsComponent, canActivate: [UrlValidityGuard]}
     ]},
-    { path: 'add', component: AddComponent }
+    { path: 'add', component: AddComponent },
+    { path: '**', redirectTo: '/' }
 ];
   
   @NgModule({

@@ -1,17 +1,12 @@
-<div id="container">
-  <mat-spinner
-    *ngIf="loading$ | async; else loaded"
-    value="indeterminate"
-  ></mat-spinner>
+<mat-spinner *ngIf="loading$ | async; else loaded" value="indeterminate"></mat-spinner>
 
-  <ng-template #loaded>
-    <div *ngIf="todo$ | async as todo">
-      <mat-card [class.closed]="todo.isClosed">
-        <mat-card-title>{{ todo.title }}</mat-card-title>
-        <mat-card-content>
-          <span class="description">{{ todo.description }}</span>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </ng-template>
-</div>
+<ng-template #loaded>
+  <div *ngIf="todo$ | async as todo">
+    <mat-card [class.closed]="todo.isClosed">
+      <mat-card-title>{{ todo.title }}</mat-card-title>
+      <mat-card-content>
+        <span class="description">{{ todo.description }}</span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

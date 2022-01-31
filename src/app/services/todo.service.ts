@@ -23,6 +23,10 @@ export class TodoService {
     return this.http.get<Todo>(`${environment.baseUrl}/todos/${todoId}`);
   }
 
+  exist(todoId: number) {
+    return this.http.get<Todo>(`${environment.baseUrl}/todos/${todoId}`, { observe: 'response' });
+  }
+
   add(todoBase: TodoBase): Observable<Todo> {
     const todo: Todo = { ...todoBase, isClosed: false, id: Date.now() }; 
     return this.http.post<Todo>(`${environment.baseUrl}/todos`, todo);

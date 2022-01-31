@@ -7,8 +7,10 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { selectTodo } from 'src/app/store/selectors';
+import { combineLatestWith, filter, map, Observable } from 'rxjs';
+import { Todo } from './models/todo';
+import { getTodo } from './store/actions';
+import { selectLoading, selectTodo } from './store/selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -16,22 +18,24 @@ import { selectTodo } from 'src/app/store/selectors';
 export class UrlValidityGuard implements CanActivate {
   allowed: boolean = false;
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(
+    private router: Router,
+    private store: Store
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    const todo$ = this.store.select(selectTodo(+route.paramMap.get('todoId')!));
-    todo$.subscribe({
-      next: (todo) => {
-        this.allowed = !!todo;
-      },
-    });
-    return this.allowed ? true : this.router.navigateByUrl('/');
+  ): Observable<boolean | UrlTree> {
+    // Need to find a way to redirect all utl except the one described in route to /
+    const id = +route.paramMap.get('todoId')!;
+    this.store.dispatch(getTodo({ id }));
+    isNaN(id) && this.router.navigateByUrl('/');
+    return this.store.select(selectTodo(id)).pipe(
+      combineLatestWith(this.store.select(selectLoading)),
+      filter((array: Array<Todo | undefined | boolean>) => array[1] === false),
+      map((result) => result[0] !== undefined ? true : this.router.parseUrl('/'))
+    );
+    
   }
 }
