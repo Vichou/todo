@@ -22,27 +22,29 @@ export class Effects {
   getTodos$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getTodos),
-      mergeMap(() => {
-        return this.todoService.list().pipe(
+      mergeMap(() =>
+        this.todoService.list().pipe(
           map((todos) => getTodosSuccess({ todos })),
           catchError(() => [getTodosFailed()])
-        );
-      })
+        )
+      )
     )
   );
 
   updateTodo$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateTodo),
-      map(({ todo }) => {
-        return { ...todo, isClosed: !todo.isClosed, closingTimestamp: todo.isClosed ? undefined : Date.now() };
-      }),
-      switchMap((todo) => {
-        return this.todoService.update(todo).pipe(
+      map(({ todo }) => ({
+        ...todo,
+        isClosed: !todo.isClosed,
+        closingTimestamp: todo.isClosed ? undefined : Date.now(),
+      })),
+      switchMap((todo) =>
+        this.todoService.update(todo).pipe(
           map((updatedTodo) => updateTodoSuccess({ todo: updatedTodo })),
           catchError(() => [updateTodoFailed()])
-        );
-      })
+        )
+      )
     )
   );
 
