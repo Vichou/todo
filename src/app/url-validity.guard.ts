@@ -7,7 +7,8 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { combineLatestWith, filter, map, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
+import { filter, map, combineLatest } from 'rxjs/operators';
 import { getTodo } from './store/actions';
 import { selectLoading, selectTodo } from './store/selectors';
 
@@ -30,9 +31,9 @@ export class UrlValidityGuard implements CanActivate {
     isNaN(id) && this.router.navigateByUrl('/');
     this.store.dispatch(getTodo({ id }));
     return this.store.select(selectTodo(id)).pipe(
-      combineLatestWith(this.store.select(selectLoading)),
+      combineLatest(this.store.select(selectLoading)),
       filter(([todo, isLoading]) => !!todo || isLoading === false),
-      map(([todo, _]) =>todo !== undefined ? true : this.router.parseUrl('/'))
+      map(([todo, _]) => todo !== undefined ? true : this.router.parseUrl('/'))
     );
   }
 }

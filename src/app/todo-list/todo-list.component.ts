@@ -12,14 +12,11 @@ import { Todo } from '../models/todo';
 })
 export class TodoListComponent implements OnInit {
 
-  todos$: Observable<Todo[]>
+  todos$ = this.store.select(selectTodos);
 
-  loading$: Observable<boolean>;
+  loading$ = this.store.select(selectLoading);
 
-  constructor(private store:Store) {
-    this.todos$ = this.store.select(selectTodos);
-    this.loading$ = this.store.select(selectLoading);
-  }
+  constructor(private store:Store) {}
 
   ngOnInit(): void {
     this.store.dispatch(getTodos());

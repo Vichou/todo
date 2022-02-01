@@ -35,9 +35,7 @@ export class Effects {
     this.actions$.pipe(
       ofType(updateTodo),
       map(({ todo }) => {
-        const status = todo.isClosed;
-        const closingTimestamp = status ? undefined : Date.now();
-        return { ...todo, isClosed: !status, closingTimestamp };
+        return { ...todo, isClosed: !todo.isClosed, closingTimestamp: todo.isClosed ? undefined : Date.now() };
       }),
       switchMap((todo) => {
         return this.todoService.update(todo).pipe(

@@ -13,7 +13,7 @@ import { Todo } from '../models/todo';
 })
 export class DetailsComponent implements OnInit {
 
-  loading$: Observable<boolean>;
+  loading$ = this.store.select(selectLoading);
   
   todoId: number | null = null;
 
@@ -22,12 +22,9 @@ export class DetailsComponent implements OnInit {
   constructor(private store:Store, private route: ActivatedRoute) {
     this.todoId = +this.route.snapshot.paramMap.get("todoId")!;
     this.todo$ = this.store.select(selectTodo(this.todoId!));
-    this.loading$ = this.store.select(selectLoading);
-
    }
 
   ngOnInit(): void {
-    
     this.store.dispatch(getTodo({ id: this.todoId! }));
   }
 

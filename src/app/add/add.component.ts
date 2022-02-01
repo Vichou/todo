@@ -11,25 +11,17 @@ import { createTodo } from 'src/app/store/actions';
 })
 export class AddComponent {
 
-  titleControl: FormControl;
-
-  descriptionControl: FormControl;
-
   todoForm: FormGroup;
 
   constructor(formBuilder: FormBuilder, private store:Store, private router:Router) {
-    this.titleControl = formBuilder.control('', [Validators.required]);
-    this.descriptionControl = formBuilder.control(''); 
     this.todoForm = formBuilder.group({
-      title: this.titleControl,
-      description: this.descriptionControl,
+      title: formBuilder.control('', [Validators.required]),
+      description: formBuilder.control(''),
     });
   }
 
   createTodo() {
     this.store.dispatch(createTodo({ todoBase: this.todoForm.value }));
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
-
-
 }
